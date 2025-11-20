@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Building a Partner Ecosystem That Drives Software Revenue | HCI Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A case study and framework on how a Partner Leader built a modern, revenue-focused partner ecosystem for a growing software company." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy-blue: #1c3a52;
+      --dark-gray: #5a6570;
+      --light-gray: #f5f5f5;
+      --white: #ffffff;
+      --black: #1a1a1a;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      color: #333;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--white);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .back-link {
+      color: var(--navy-blue);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .back-link:hover {
+      color: var(--dark-gray);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--navy-blue) 0%, var(--dark-gray) 100%);
+      color: var(--white);
+      padding: 140px 2rem 100px;
+      margin-top: 85px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--white);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    .outcome-pills {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      font-size: 0.85rem;
+    }
+
+    /* Sections */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 2rem;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--navy-blue);
+      font-weight: 700;
+    }
+
+    section h3 {
+      font-size: 1.8rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: var(--navy-blue);
+      font-weight: 600;
+    }
+
+    .section-eyebrow {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--dark-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--dark-gray);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Alternating backgrounds */
+    section:nth-child(even) {
+      background-color: var(--light-gray);
+    }
+
+    /* Two Column Layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero {
+        padding: 100px 1.5rem 60px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Cards */
+    .card {
+      padding: 2rem;
+      background-color: var(--white);
+      border-top: 4px solid var(--navy-blue);
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--navy-blue);
+    }
+
+    /* Highlight Box */
+    .highlight {
+      border-left: 4px solid var(--navy-blue);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      background: rgba(28, 58, 82, 0.05);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-radius: 2px;
+    }
+
+    .highlight strong {
+      color: var(--navy-blue);
+    }
+
+    /* Lists */
+    ul {
+      padding-left: 1.5rem;
+      line-height: 1.8;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      color: var(--dark-gray);
+    }
+
+    /* Figure/Diagram boxes */
+    figure {
+      border-radius: 2px;
+      border: 1px solid #e0e0e0;
+      padding: 1.5rem;
+      background: var(--white);
+      margin: 2rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    figure h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: var(--navy-blue);
+      font-weight: 600;
+    }
+
+    figure figcaption {
+      font-size: 0.85rem;
+      color: var(--dark-gray);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    table th, table td {
+      border: 1px solid #e0e0e0;
+      padding: 0.75rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    table th {
+      background: var(--navy-blue);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    table td {
+      background: var(--white);
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .kpi-card {
+      border-radius: 2px;
+      border-top: 4px solid var(--navy-blue);
+      padding: 1.5rem;
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .kpi-label {
+      font-weight: 600;
+      color: var(--navy-blue);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .kpi-sub {
+      font-size: 0.85rem;
+      color: var(--dark-gray);
+      line-height: 1.5;
+    }
+
+    /* CTA Block */
+    .cta-block {
+      margin-top: 0;
+      padding: 3rem;
+      background: var(--navy-blue);
+      color: var(--white);
+      border-radius: 2px;
+    }
+
+    .cta-block h2 {
+      color: var(--white);
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-block p {
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    .cta-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .contact-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background-color: var(--white);
+      color: var(--navy-blue);
+      text-decoration: none;
+      border-radius: 3px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .contact-button:hover {
+      background-color: var(--light-gray);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav>
+      <a href="index.html" class="back-link">← Back to HCI Solutions</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-container">
+      <div class="tag">Case Study & Framework · Partner-Led Revenue</div>
+      <h1>Building a Partner Ecosystem That Drives Software Revenue</h1>
+      <p>
+        How a Partner Leader transformed a scattered set of relationships into a measurable,
+        revenue-focused ecosystem — and the framework you can use to do the same.
+      </p>
+      <div class="outcome-pills">
+        <span class="pill"><strong>Outcome:</strong> Faster sales cycles</span>
+        <span class="pill"><strong>Outcome:</strong> More sourced & influenced ARR</span>
+        <span class="pill"><strong>Outcome:</strong> Repeatable partner motions</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Executive Summary -->
+    <section aria-labelledby="summary">
+      <p class="section-eyebrow">Overview</p>
+      <h2 id="summary">Executive Summary</h2>
+      <p class="lead">
+        Many software companies reach a familiar inflection point: strong product, clear demand,
+        early customer wins — but not nearly enough sales coverage, market access, or trusted
+        relationships to scale at the pace they'd like.
+      </p>
+      <p>
+        In this case, a growing enterprise-focused software company brought in a Partner Leader
+        to design and launch a modern ecosystem program. The goal was simple: turn partnerships
+        into a real revenue engine, not just a slide of logos.
+      </p>
+      <div class="highlight">
+        <strong>Targets included:</strong>
+        <ul>
+          <li>Increasing partner-sourced and influenced pipeline by <strong>X%</strong> (placeholder)</li>
+          <li>Reducing enterprise sales cycles by <strong>X months</strong> (placeholder)</li>
+          <li>Influencing <strong>$X in new ARR</strong> (placeholder) through co-sell motions</li>
+          <li>Expanding into <strong>X new markets or verticals</strong> (placeholder)</li>
+        </ul>
+      </div>
+      <p>
+        What follows blends the real-world story with a practical partnership framework that any
+        SaaS or enterprise software company can adapt.
+      </p>
+    </section>
+
+    <!-- Situation & Challenge -->
+    <section aria-labelledby="situation">
+      <p class="section-eyebrow">Context</p>
+      <h2 id="situation">The Situation & Core Challenge</h2>
+      <div class="two-col">
+        <div>
+          <p>
+            The company was moving from early traction into growth. The product solved real
+            problems. Early adopters were vocal advocates. But growth was gated by a handful of
+            constraints that will sound familiar to most enterprise software teams:
+          </p>
+          <ul>
+            <li>Sales cycles measured in quarters (or years), not weeks</li>
+            <li>Lean sales headcount stretched across too many opportunities</li>
+            <li>No formal partner program or playbooks</li>
+            <li>
+              Underused relationships with EPCs, consultants, integrators, and technology vendors
+            </li>
+            <li>
+              Difficulty building trust in conservative or highly regulated industries
+            </li>
+          </ul>
+          <p>
+            The company didn't just need more salespeople. It needed leverage — through a
+            well-designed partner ecosystem.
+          </p>
+        </div>
+        <div>
+          <div class="card">
+            <h3>What had to change</h3>
+            <ul>
+              <li>Partnerships treated as a core go-to-market strategy</li>
+              <li>Clear partner types and value by type</li>
+              <li>Consistent co-sell and co-delivery motions</li>
+              <li>Data-driven KPIs for partner performance and pipeline</li>
+              <li>Dedicated management to keep partners active and accountable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Framework -->
+    <section id="framework" aria-labelledby="framework-heading">
+      <p class="section-eyebrow">Framework</p>
+      <h2 id="framework-heading">The Partnership Architecture Used</h2>
+      <p>
+        The Partner Leader's mandate was to turn loosely connected relationships into a structured,
+        measurable ecosystem. The architecture that emerged is repeatable across most software
+        businesses, with thoughtful tailoring to each market.
+      </p>
+
+      <!-- Diagram 1: Ecosystem Map -->
+      <figure>
+        <h4>Diagram 1 · Partner Ecosystem Map</h4>
+        <p>
+          At the center: <strong>Your Software Company</strong>. Around the center: a network of
+          partner types, each bringing a different kind of leverage.
+        </p>
+        <ul>
+          <li>Service Providers / Systems Integrators / Consulting Firms</li>
+          <li>Distributors / Resellers / VARs</li>
+          <li>Technology Partners (SaaS, data providers, AI/ML apps)</li>
+          <li>Trusted Advisors / Influencers</li>
+          <li>Hardware Providers / OEMs</li>
+          <li>Data Capture Partners (UAS, imagery, LiDAR, GIS)</li>
+          <li>Engineering &amp; EPC/AEC Firms</li>
+          <li>Referral / Channel Representatives</li>
+        </ul>
+        <figcaption>
+          Concept: visually, imagine a radial diagram with your company at the center, and these
+          partner categories as labeled nodes around it. Lines represent co-sell, co-delivery, and
+          referral motions.
+        </figcaption>
+      </figure>
+
+      <h3>Partner Value Matrix: Not All Partners Drive the Same Outcomes</h3>
+      <p>
+        One of the most important steps was clarifying <em>how</em> each partner type contributes to
+        revenue. Some open doors. Some accelerate decisions. Some make your product easier to adopt.
+      </p>
+
+      <!-- Diagram 2: Value Matrix -->
+      <figure>
+        <h4>Diagram 2 · Partner Value Matrix</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Partner Type</th>
+              <th>Market Penetration</th>
+              <th>Deal Velocity</th>
+              <th>Co-Sell / Co-Delivery</th>
+              <th>Hybrid Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Service Providers / SIs</td>
+              <td>High – embedded with target accounts</td>
+              <td>Medium – trusted, but often later in cycle</td>
+              <td>High – can implement &amp; deliver</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Distributors / VARs</td>
+              <td>Medium–High – broad coverage</td>
+              <td>High – used to transactional flow</td>
+              <td>Medium – bundle and resell</td>
+              <td>Sometimes</td>
+            </tr>
+            <tr>
+              <td>Technology Partners</td>
+              <td>Medium – shared customers</td>
+              <td>Medium – technical validation</td>
+              <td>High – integrated solutions</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Trusted Advisors</td>
+              <td>High – direct influence over buying</td>
+              <td>High – can accelerate executive alignment</td>
+              <td>Low – rarely deliver</td>
+              <td>Influence-focused</td>
+            </tr>
+            <tr>
+              <td>Hardware / OEMs</td>
+              <td>Medium – established install base</td>
+              <td>Medium – spec &amp; standards driven</td>
+              <td>High – packaged offerings</td>
+              <td>Yes</td>
+            </tr>
+          </tbody>
+        </table>
+        <figcaption>
+          This matrix becomes the lens for prioritizing where to invest partner time and resources.
+        </figcaption>
+      </figure>
+
+      <h3>Ideal Partner Profile (IPP)</h3>
+      <p>
+        With partner categories and value clarified, an <strong>Ideal Partner Profile</strong> was
+        defined. Rather than chasing anyone interested, the program focused on organizations that:
+      </p>
+      <ul>
+        <li>Operate in target industries or territories</li>
+        <li>Serve overlapping customer segments</li>
+        <li>Have compatible services or technology stacks</li>
+        <li>Possess influence with enterprise decision-makers</li>
+        <li>Can co-sell or co-deliver with reasonable effort</li>
+        <li>Show an appetite for building joint offerings</li>
+      </ul>
+
+      <h3>Joint Value Proposition Engineering</h3>
+      <p>
+        Before outreach, each prospective partner was analyzed through a
+        <strong>Partner Prospect Report</strong>. This isn't just background research — it's a way
+        of making sure the pitch is grounded in what the <em>partner</em> cares about:
+      </p>
+      <ul>
+        <li>How they make money today</li>
+        <li>What they sell and to whom</li>
+        <li>Where your software amplifies their value or competitiveness</li>
+        <li>Specific co-sell, co-delivery, or bundled-offer opportunities</li>
+        <li>Shared customers or accounts where collaboration makes sense immediately</li>
+      </ul>
+      <p>
+        By the time the first call happens, you're not asking for a favor — you're presenting a
+        growth story for their business.
+      </p>
+
+      <h3>Co-Sell &amp; Co-Delivery Motions</h3>
+      <p>
+        The Partner Leader also defined how joint work actually happens in the field:
+      </p>
+      <ul>
+        <li>Co-discovery meetings and account mapping</li>
+        <li>Joint demos or validation sessions</li>
+        <li>Shared solution architecture and integration planning</li>
+        <li>Co-authored proposals and statements of work</li>
+        <li>Partner-led implementation or services delivery where appropriate</li>
+      </ul>
+
+      <h3>Ecosystem Activation Using the "Wave" Model</h3>
+      <p>
+        Rather than moving in a straight line (identify &gt; recruit &gt; enable &gt; repeat), the
+        program followed a wave-based motion:
+      </p>
+
+      <!-- Diagram 3: Wave Model -->
+      <figure>
+        <h4>Diagram 3 · Wave-Based Partner Activation</h4>
+        <p><strong>Wave 1:</strong> Highest-priority partners most likely to create near-term impact.</p>
+        <p><strong>Wave 2:</strong> Next-tier strategic partners, activated while Wave 1 is still maturing.</p>
+        <p><strong>Wave 3:</strong> Longer-horizon partners, nurtured as future growth levers.</p>
+        <figcaption>
+          Visually: imagine three overlapping waves on a simple timeline — new waves starting before
+          previous ones fully "crest," keeping the ecosystem in constant motion.
+        </figcaption>
+      </figure>
+
+      <h3>Partner Management &amp; Growth</h3>
+      <p>
+        Crucially, recruitment was only the start. Ongoing structure is what turned partners into
+        repeatable revenue contributors:
+      </p>
+      <ul>
+        <li>Weekly or biweekly touchpoints with key partners</li>
+        <li>Monthly pipeline and opportunity reviews</li>
+        <li>Quarterly Business Reviews (QBRs) to realign goals and tactics</li>
+        <li>Partner performance dashboards shared transparently</li>
+        <li>SPIFs, MDF, and targeted incentives to reward impact</li>
+        <li>Co-marketing, joint content, and field events</li>
+      </ul>
+
+      <h3>KPIs &amp; Data-Driven Management</h3>
+      <p>
+        To move beyond "we think partnerships are working," the program relied on a full set of
+        KPIs:
+      </p>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Relationship KPIs</div>
+          <div class="kpi-sub">Engagement, QBR participation, enablement completion, partner health</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Pipeline KPIs</div>
+          <div class="kpi-sub">Sourced &amp; influenced pipeline, joint opps, stage progression speed</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Revenue KPIs</div>
+          <div class="kpi-sub">Sourced ARR, influenced ARR, deal-size uplift, vertical/region impact</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Operational KPIs</div>
+          <div class="kpi-sub">Time-to-first-deal, activation-to-opportunity conversion, partner ROI</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study -->
+    <section aria-labelledby="case-study">
+      <p class="section-eyebrow">Case Study</p>
+      <h2 id="case-study">What Was Actually Built</h2>
+      <p>
+        While details are anonymized, the sequence of work is typical of what many companies will
+        experience when they commit to a serious partner motion.
+      </p>
+
+      <h3>Phase 1 — Discovery &amp; Design</h3>
+      <ul>
+        <li>Mapped the full ecosystem across services, technology, and channels</li>
+        <li>Defined the Ideal Partner Profile and value matrix</li>
+        <li>Created Partner Prospect Reports for top targets</li>
+        <li>Aligned internal stakeholders around how co-sell would work</li>
+      </ul>
+
+      <h3>Phase 2 — Targeted Outreach in Waves</h3>
+      <ul>
+        <li>Launched Wave 1 with the highest-priority partners</li>
+        <li>Qualified interest and fit using IPP and prospect reports</li>
+        <li>Initiated Wave 2 while Wave 1 partners were onboarding</li>
+        <li>
+          Advanced <strong>X partners in Y weeks</strong> from initial contact to active engagement
+          (placeholder)
+        </li>
+      </ul>
+
+      <h3>Phase 3 — Activation &amp; Early Wins</h3>
+      <ul>
+        <li>Co-selling into shared target accounts</li>
+        <li>Joint demos and technical validation sessions</li>
+        <li>
+          Generated <strong>X partner-influenced opportunities in the first 90 days</strong>
+          (placeholder)
+        </li>
+        <li>Captured early feedback to refine playbooks and messaging</li>
+      </ul>
+
+      <h3>Phase 4 — Scaling &amp; Maturing the Ecosystem</h3>
+      <ul>
+        <li>Entered <strong>X new industries or segments</strong> with partner support (placeholder)</li>
+        <li>Expanded into additional regions through distributors and advisors</li>
+        <li>
+          Saw partner-sourced and influenced ARR grow by <strong>X%</strong> year-over-year
+          (placeholder)
+        </li>
+        <li>Institutionalized partner dashboards and QBRs for ongoing management</li>
+      </ul>
+    </section>
+
+    <!-- Impact -->
+    <section aria-labelledby="impact">
+      <p class="section-eyebrow">Impact</p>
+      <h2 id="impact">Results &amp; Business Impact</h2>
+      <div class="two-col">
+        <div>
+          <h3>Revenue Outcomes</h3>
+          <ul>
+            <li><strong>$X</strong> in partner-influenced ARR (placeholder)</li>
+            <li><strong>$X</strong> in partner-sourced ARR (placeholder)</li>
+            <li><strong>X%</strong> reduction in average sales cycle length (placeholder)</li>
+            <li><strong>X%</strong> increase in average deal size (placeholder)</li>
+          </ul>
+
+          <h3>Market Expansion</h3>
+          <ul>
+            <li>New verticals entered: <strong>X</strong> (placeholder)</li>
+            <li>New regions covered: <strong>X</strong> (placeholder)</li>
+            <li>
+              Increased target-account coverage by <strong>X%</strong> through partner access
+              (placeholder)
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Organizational Maturity</h3>
+          <ul>
+            <li>Clear roles and motions between sales and partnerships</li>
+            <li>Forecastable partner pipeline and revenue contributions</li>
+            <li>Codified partner playbooks and enablement paths</li>
+            <li>A scalable structure for future partner waves and geographies</li>
+          </ul>
+          <div class="highlight">
+            <strong>Lesson:</strong> partner ecosystems don't "just happen." They're built with
+            intention, structure, and ongoing management — and when done right, they become one of
+            the most capital-efficient growth levers in the business.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / HCI Positioning -->
+    <section id="cta" aria-labelledby="cta-heading" style="background-color: var(--white); padding: 0;">
+      <div class="cta-block">
+        <h2 id="cta-heading">Where This Framework Lives Today</h2>
+        <p>
+          This case study reflects the work of a Partner Leader embedded within a software company.
+          The underlying framework — ecosystem mapping, value matrices, Partner Prospect Reports,
+          wave-based activation, and KPI-driven management — now informs how HCI Solutions helps
+          clients build and scale their own partner programs.
+        </p>
+        <div>
+          <strong style="display: block; margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.1rem;">HCI Solutions can help you:</strong>
+          <ul style="margin-left: 1.5rem; margin-top: 0.75rem;">
+            <li>Design or relaunch a revenue-focused partner strategy</li>
+            <li>Identify and prioritize the right partner types for your markets</li>
+            <li>Build co-sell and co-delivery motions that your teams actually use</li>
+            <li>Implement KPI dashboards for sourced &amp; influenced revenue</li>
+            <li>Provide fractional partner leadership and ongoing partner management</li>
+          </ul>
+        </div>
+        <div class="cta-inline">
+          <a href="mailto:info@hcisolutions.com" class="contact-button">Schedule a conversation</a>
+          <span style="font-size:0.95rem; opacity: 0.85;">
+            Or email us at info@hcisolutions.com
+          </span>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 HCI Solutions. All rights reserved.</p>
+  </footer>
+</body>
+</html>

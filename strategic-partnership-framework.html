@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Strategic Partnership Framework | HCI Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A strategic framework for CROs, Heads of Sales, and Partnership Leaders to engineer revenue-accelerating SaaS partner programs." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy-blue: #1c3a52;
+      --dark-gray: #5a6570;
+      --light-gray: #f5f5f5;
+      --white: #ffffff;
+      --black: #1a1a1a;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      color: #333;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--white);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .back-link {
+      color: var(--navy-blue);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .back-link:hover {
+      color: var(--dark-gray);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--navy-blue) 0%, var(--dark-gray) 100%);
+      color: var(--white);
+      padding: 140px 2rem 100px;
+      margin-top: 60px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--white);
+      max-width: 900px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: var(--white);
+      color: var(--navy-blue);
+      text-decoration: none;
+      border-radius: 3px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--light-gray);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      background: transparent;
+      color: var(--white);
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--white);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Sections */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 2rem;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--navy-blue);
+      font-weight: 700;
+    }
+
+    section h3 {
+      font-size: 1.8rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: var(--navy-blue);
+      font-weight: 600;
+    }
+
+    .section-eyebrow {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--dark-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--dark-gray);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Alternating backgrounds */
+    section:nth-child(even) {
+      background-color: var(--light-gray);
+    }
+
+    /* Two Column Layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero {
+        padding: 100px 1.5rem 60px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Cards */
+    .card {
+      padding: 2rem;
+      background-color: var(--white);
+      border-top: 4px solid var(--navy-blue);
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--navy-blue);
+    }
+
+    /* Highlight Box */
+    .highlight {
+      border-left: 4px solid var(--navy-blue);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      background: rgba(28, 58, 82, 0.05);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding-right: 1rem;
+      border-radius: 2px;
+    }
+
+    .highlight strong {
+      color: var(--navy-blue);
+    }
+
+    /* Lists */
+    ul {
+      padding-left: 1.5rem;
+      line-height: 1.8;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      color: var(--dark-gray);
+    }
+
+    /* Figure/Diagram boxes */
+    figure {
+      border-radius: 2px;
+      border: 1px solid #e0e0e0;
+      padding: 1.5rem;
+      background: var(--white);
+      margin: 2rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    figure h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: var(--navy-blue);
+      font-weight: 600;
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+    }
+
+    figure figcaption {
+      font-size: 0.85rem;
+      color: var(--dark-gray);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* CTA Block */
+    .cta-block {
+      margin-top: 0;
+      padding: 3rem;
+      background: var(--navy-blue);
+      color: var(--white);
+      border-radius: 2px;
+    }
+
+    .cta-block h2 {
+      color: var(--white);
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-block p {
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    .cta-block ul {
+      margin-left: 1.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .cta-block li {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .cta-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .contact-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background-color: var(--white);
+      color: var(--navy-blue);
+      text-decoration: none;
+      border-radius: 3px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .contact-button:hover {
+      background-color: var(--light-gray);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav>
+      <a href="index.html" class="back-link">← Back to HCI Solutions</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-container">
+      <div class="tag">Framework & Case Study · Partnerships</div>
+      <h1>Strategic Partnership Framework: Engineering Revenue-Accelerating Partner Programs</h1>
+      <p>
+        A strategic framework for CROs, Heads of Sales, and Partnership Leaders who want to turn partner
+        programs from "nice relationships" into a measurable go-to-market engine.
+      </p>
+      <div class="hero-cta">
+        <a href="#cta" class="btn-primary">Schedule a consultation</a>
+        <a href="#pillars" class="btn-secondary">Jump to the five pillars</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Executive Summary -->
+    <section aria-labelledby="summary">
+      <p class="section-eyebrow">Overview</p>
+      <h2 id="summary">Executive Summary</h2>
+      <p class="lead">
+        Most SaaS partner programs fail—not because partnerships don't work, but because they are launched
+        without a real design. Logos get collected. Announcements get written. Very little revenue appears.
+      </p>
+      <p>
+        The truth is simple: <strong>revenue-accelerating partner programs are engineered, not improvised</strong>.
+        This whitepaper introduces a strategic framework for building partner ecosystems that support real
+        pipeline, faster sales cycles, and scalable access to your ideal customers.
+      </p>
+      <div class="highlight">
+        <strong>We focus on five core pillars:</strong>
+        <ul>
+          <li>Strategy & Vision</li>
+          <li>Ideal Partner Profile (IPP) & Ecosystem Mapping</li>
+          <li>Program Framework & Partner Motions</li>
+          <li>Partner Enablement & Acceleration</li>
+          <li>Monitoring, KPIs & Performance Management</li>
+        </ul>
+      </div>
+      <p>
+        Each pillar is grounded in real-world experience from a Partner Leader who architected and ran
+        partner programs inside a scaling SaaS company—adapted here for CROs, Sales Leaders, and Partnership
+        Heads who want to build a GTM engine, not a side project.
+      </p>
+    </section>
+
+    <!-- Why Partner Programs Fail -->
+    <section aria-labelledby="fail">
+      <p class="section-eyebrow">The CRO's Reality</p>
+      <h2 id="fail">Why Partner Programs Fail</h2>
+      <div class="two-col">
+        <div>
+          <p>
+            If you've ever tried to build a partner program, you've likely seen some of these patterns:
+          </p>
+          <ul>
+            <li>Partners signed based on enthusiasm—not alignment</li>
+            <li>Field sales unsure when or how to involve partners</li>
+            <li>No shared ideal customer profile (ICP) or value proposition</li>
+            <li>Co-sell motions left undefined or unused</li>
+            <li>Little or no enablement beyond a slide deck</li>
+            <li>No KPIs or accountability rhythm</li>
+          </ul>
+          <p>
+            When this happens, partner programs become a distraction rather than a multiplier. The issue
+            isn't the concept of partnerships—it's the lack of engineering behind them.
+          </p>
+        </div>
+        <div>
+          <div class="card">
+            <h3>The Core Problem</h3>
+            <p>
+              Most companies expect partners to "just produce" without designing:
+            </p>
+            <ul>
+              <li>Who the right partners are</li>
+              <li>How they create revenue</li>
+              <li>What motions they should run</li>
+              <li>How success will be measured and managed</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Partners don't fail. Systems do.</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillars Intro -->
+    <section id="pillars" aria-labelledby="pillars-heading">
+      <p class="section-eyebrow">Framework</p>
+      <h2 id="pillars-heading">The Five Pillars of a Revenue-Engineered Partner Program</h2>
+      <p>
+        To move from ad hoc relationships to an engineered GTM engine, we use a five-pillar framework:
+        Strategy & Vision, IPP & Ecosystem Mapping, Program Framework & Motions, Enablement
+        & Acceleration, and Monitoring & KPIs.
+      </p>
+      <figure>
+        <h4>Figure 1 · Five Pillars of a Revenue-Engineered Partner Program</h4>
+        <img src="five_pillars_partner_program__1_.png" alt="Bar chart showing five pillars: Strategy, IPP, Framework, Enablement, KPIs" />
+        <figcaption>
+          Strategy, IPP & ecosystem mapping, program framework, enablement, and KPIs form the structure
+          of a partner program designed to drive revenue—not just relationships.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- Pillar 1 -->
+    <section aria-labelledby="pillar1">
+      <p class="section-eyebrow">Pillar 1</p>
+      <h2 id="pillar1">Strategy & Vision: Engineering the GTM Engine</h2>
+      <p>
+        A partner program cannot outperform the clarity of its strategy. Before a single agreement is
+        signed, leadership needs to answer:
+      </p>
+      <ul>
+        <li>What role should partners play in our GTM motion?</li>
+        <li>Are we looking for reach, trust, service capacity, integrations, or all of the above?</li>
+        <li>Which customer segments and buying centers do we want partners to unlock?</li>
+        <li>How does this align with our sales, product, and customer success strategy?</li>
+      </ul>
+      <div class="highlight">
+        <strong>Anchor example:</strong> One SaaS company discovered that their best path into regulated
+        markets wasn't through generic channels, but through engineering and consulting partners already
+        trusted by their target customers. Once the strategy shifted to that reality, partner conversations
+        became sharper, and opportunities more real.
+      </div>
+      <p>
+        This pillar turns "we should have partners" into a clear GTM hypothesis that sales, product,
+        and partnerships can align around.
+      </p>
+    </section>
+
+    <!-- Pillar 2 -->
+    <section aria-labelledby="pillar2">
+      <p class="section-eyebrow">Pillar 2</p>
+      <h2 id="pillar2">Ideal Partner Profile (IPP) & Ecosystem Mapping</h2>
+      <p>
+        The Ideal Partner Profile (IPP) does for partnerships what the Ideal Customer Profile (ICP) does
+        for sales: it focuses effort where it has the highest chance of paying off.
+      </p>
+      <p><strong>The IPP defines:</strong></p>
+      <ul>
+        <li>Who the partner serves (industries, segments, geos)</li>
+        <li>How the partner makes money today</li>
+        <li>Where they sit in the customer's buying journey</li>
+        <li>How your solution enhances or extends their offering</li>
+        <li>What joint value looks like—for them and for you</li>
+      </ul>
+      <figure>
+        <h4>Figure 2 · Partner Ecosystem Architecture</h4>
+        <img src="partner_ecosystem_architecture__1_.png" alt="Diagram of partner ecosystem around a software company" />
+        <figcaption>
+          Service partners, technology integrations, VARs, advisors, OEMs, AI/data providers, EPC/AEC firms,
+          and channel/referral partners all play different roles in the ecosystem.
+        </figcaption>
+      </figure>
+      <p>
+        Once you have an IPP, you can map your broader ecosystem: system integrators, technology partners,
+        OEMs, advisors, channels, and key service providers.
+      </p>
+      <figure>
+        <h4>Figure 3 · IPP Scoring Matrix</h4>
+        <img src="ipp_scoring_matrix__1_.png" alt="Heatmap showing IPP scoring by partner type and criteria" />
+        <figcaption>
+          An IPP scoring matrix helps compare partner types based on market access, co-sell fit, integration
+          value, deal velocity, and revenue potential—prioritizing the most strategic partners.
+        </figcaption>
+      </figure>
+      <div class="highlight">
+        <strong>Anchor example:</strong> By mapping the ecosystem and scoring partner types, one company
+        realized their strongest leverage came from a small number of consulting and engineering firms,
+        not a broad reseller network. Focusing there led to faster field traction.
+      </div>
+    </section>
+
+    <!-- Pillar 3 -->
+    <section aria-labelledby="pillar3">
+      <p class="section-eyebrow">Pillar 3</p>
+      <h2 id="pillar3">Program Framework & Partner Motions</h2>
+      <p>
+        With strategy and IPP in place, the next phase is building the actual operating system of the
+        partner program—the framework that defines how partners are recruited, activated, and engaged.
+      </p>
+      <p><strong>Key components include:</strong></p>
+      <ul>
+        <li>A defined recruitment and qualification process</li>
+        <li>Structured onboarding and activation steps</li>
+        <li>Clear co-sell and co-delivery motions</li>
+        <li>Integration or solution packaging paths where relevant</li>
+        <li>Governance: who owns what, how often you meet, and what gets decided</li>
+        <li>Contracting standards and mutual expectations</li>
+      </ul>
+      <p>
+        Co-sell motions are particularly critical. Partners and sales teams need to know:
+      </p>
+      <ul>
+        <li>When to bring each other into a deal</li>
+        <li>How to share account context and intelligence</li>
+        <li>Who leads which parts of discovery and demo</li>
+        <li>What a "win" looks like for each party</li>
+      </ul>
+      <div class="highlight">
+        <strong>Anchor example:</strong> In one SaaS implementation, moving from "informal intros" to a
+        defined co-sell motion—with shared discovery, joint demos, and co-authored proposals—turned
+        previously stalled interest into active partner-influenced opportunities.
+      </div>
+    </section>
+
+    <!-- Pillar 4 -->
+    <section aria-labelledby="pillar4">
+      <p class="section-eyebrow">Pillar 4</p>
+      <h2 id="pillar4">Partner Enablement & Acceleration</h2>
+      <p>
+        Even the best-aligned partners won't generate revenue if they aren't enabled. Enablement isn't a
+        one-time webinar—it's an ongoing process that turns partners into confident advocates.
+      </p>
+      <p><strong>Effective enablement covers:</strong></p>
+      <ul>
+        <li>Product fundamentals and differentiators</li>
+        <li>Who to target and why (ICP/IPP alignment)</li>
+        <li>Discovery questions and talk tracks</li>
+        <li>Demo flows and outcome-based storytelling</li>
+        <li>Pricing and packaging guidance</li>
+        <li>Customer case studies and proof points</li>
+      </ul>
+      <p>
+        Acceleration comes from putting this enablement to work through:
+      </p>
+      <ul>
+        <li>SPIFs and targeted incentives</li>
+        <li>Joint webinars and events</li>
+        <li>Account-based partner plays</li>
+        <li>Co-marketing and content collaboration</li>
+        <li>Structured pilot or "lighthouse" projects</li>
+      </ul>
+      <figure>
+        <h4>Figure 4 · Partner Enablement Funnel</h4>
+        <img src="partner_enablement_funnel__1_.png" alt="Line chart representing the partner enablement funnel" />
+        <figcaption>
+          Partners move from basic awareness into training, activation, pipeline influence, and finally
+          measurable revenue contribution through intentional enablement.
+        </figcaption>
+      </figure>
+      <div class="highlight">
+        <strong>Anchor example:</strong> By providing a clear demo script, value framework, and field
+        engagement plan to one strategic partner, the Partner Leader transformed passive interest into
+        active co-selling within a single quarter.
+      </div>
+    </section>
+
+    <!-- Pillar 5 -->
+    <section aria-labelledby="pillar5">
+      <p class="section-eyebrow">Pillar 5</p>
+      <h2 id="pillar5">Monitoring, KPIs & Performance Management</h2>
+      <p>
+        A partner program is only as strong as its feedback loop. Without data and rhythm, enthusiasm fades
+        and deals stall.
+      </p>
+      <p><strong>Core KPIs include:</strong></p>
+      <ul>
+        <li>Partner-sourced pipeline and revenue</li>
+        <li>Partner-influenced pipeline and revenue</li>
+        <li>Time-to-first-opportunity for new partners</li>
+        <li>Conversion rates on co-sell deals</li>
+        <li>Partner engagement scores (meetings, activities, opportunities)</li>
+        <li>Co-marketing output and impact</li>
+      </ul>
+      <p>
+        These metrics need to be supported by an operating rhythm:
+      </p>
+      <ul>
+        <li>Weekly or biweekly touchpoints with priority partners</li>
+        <li>Monthly pipeline and performance reviews</li>
+        <li>Quarterly Business Reviews (QBRs)</li>
+        <li>Transparent dashboards shared with sales and leadership</li>
+      </ul>
+      <div class="highlight">
+        <strong>Anchor example:</strong> After introducing QBRs and shared dashboards, one partner program
+        uncovered dormant opportunities, corrected misaligned expectations, and significantly improved
+        forecast accuracy for partner-influenced deals.
+      </div>
+    </section>
+
+    <!-- Case Study -->
+    <section aria-labelledby="case-study">
+      <p class="section-eyebrow">Case Illustration</p>
+      <h2 id="case-study">How an Engineered Partner Framework Accelerated ARR</h2>
+      <p>
+        In practice, the Partner Leader applied this framework inside a scaling SaaS company in a
+        conservative, high-trust industry. While details are anonymized, the patterns are familiar:
+      </p>
+      <div class="two-col">
+        <div>
+          <h3>Before</h3>
+          <ul>
+            <li>Ad hoc partner discussions with no clear outcomes</li>
+            <li>Field teams unsure which partners to prioritize</li>
+            <li>Minimal partner-generated pipeline</li>
+            <li>Deals moving slowly due to limited trust and reach</li>
+          </ul>
+        </div>
+        <div>
+          <h3>After</h3>
+          <ul>
+            <li>A focused ecosystem of strategically selected partners</li>
+            <li>Defined co-sell motions and enablement paths</li>
+            <li>Partner-sourced and influenced opportunities in priority accounts</li>
+            <li>Improved sales velocity through joint credibility and access</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 2rem;">
+        The result wasn't just "more activity"—it was a meaningful shift in how the company accessed and
+        persuaded its ideal customers.
+      </p>
+    </section>
+
+    <!-- Closing -->
+    <section aria-labelledby="closing">
+      <p class="section-eyebrow">Conclusion</p>
+      <h2 id="closing">Why Engineered Partner Programs Are the Next GTM Advantage</h2>
+      <p>
+        Partner ecosystems are one of the most efficient ways to scale SaaS revenue. They extend reach,
+        accelerate trust, and unlock opportunities that would take years to build organically. But they
+        only work when they're designed as an integrated part of your GTM motion.
+      </p>
+      <p>
+        The takeaway is simple: <strong>engineered partner programs outperform improvised ones</strong>. CROs,
+        Heads of Sales, and Partnership Leaders who treat partnerships as a core piece of revenue
+        infrastructure gain an advantage that is hard for competitors to replicate.
+      </p>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" aria-labelledby="cta-heading" style="background-color: var(--white); padding: 0;">
+      <div class="cta-block">
+        <h2 id="cta-heading">Engineer a Partner Program That Actually Drives Revenue</h2>
+        <p>
+          This framework reflects the work of a Partner Leader operating inside a real SaaS company. Today,
+          HCI Solutions uses the same principles to help software companies design and run partner programs
+          that function as true GTM engines.
+        </p>
+        <div>
+          <strong style="display: block; margin-top: 1.5rem; margin-bottom: 0.75rem; font-size: 1.1rem;">HCI Solutions can help you:</strong>
+          <ul>
+            <li>Clarify your partner strategy and Ideal Partner Profile (IPP)</li>
+            <li>Map and prioritize your partner ecosystem</li>
+            <li>Design partner motions and program structure</li>
+            <li>Build enablement and field activation tools</li>
+            <li>Stand up KPIs, dashboards, and QBR rhythms</li>
+            <li>Provide fractional partner management to keep the engine running</li>
+          </ul>
+        </div>
+        <div class="cta-inline">
+          <a href="mailto:info@hcisolutions.com" class="contact-button">Schedule a conversation</a>
+          <span style="font-size:0.95rem; opacity: 0.85;">
+            Or email us at info@hcisolutions.com
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 HCI Solutions. All rights reserved.</p>
+  </footer>
+</body>
+</html>
